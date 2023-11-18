@@ -132,6 +132,15 @@ const getRandomLesson = () => {
   randomLesson.value = Math.floor(Math.random() * uke_lessons.length);
 };
 getRandomLesson();
+
+const likertQuestions = [
+  "I reached my goal successfully.",
+  "I was able to focus on the task at hand.",
+  "The unit was fun.",
+  "I feel like I made progress towards the larger goal.",
+  "The unit was easy.",
+  "The unit was exhausting.",
+];
 </script>
 
 <template>
@@ -160,6 +169,71 @@ getRandomLesson();
     >
       {{ uke_lessons[randomLesson].Anchor }}
     </a>
+
+    <h2 class="font-bold text-2xl mt-4">...& rate:</h2>
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th></th>
+          <th class="w-32">Strongly Disagree</th>
+          <th class="w-32">Disagree</th>
+          <th class="w-32">Neutral</th>
+          <th class="w-32">Agree</th>
+          <th class="w-32">Strongly Agree</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="question in likertQuestions" :key="question">
+          <td>{{ question }}</td>
+          <td>
+            <input
+              class="w-5 h-5 cursor-pointer"
+              type="radio"
+              :name="question"
+              value="1"
+              @click="session.questionData[question] = 1"
+            />
+          </td>
+          <td>
+            <input
+              class="w-5 h-5 cursor-pointer"
+              type="radio"
+              :name="question"
+              value="2"
+              @click="session.questionData[question] = 2"
+            />
+          </td>
+          <td>
+            <input
+              class="w-5 h-5 cursor-pointer"
+              type="radio"
+              :name="question"
+              value="3"
+              @click="session.questionData[question] = 3"
+            />
+          </td>
+          <td>
+            <input
+              class="w-5 h-5 cursor-pointer"
+              type="radio"
+              :name="question"
+              value="4"
+              @click="session.questionData[question] = 4"
+            />
+          </td>
+          <td>
+            <input
+              class="w-5 h-5 cursor-pointer"
+              type="radio"
+              :name="question"
+              value="5"
+              @click="session.questionData[question] = 5"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <button
       @click="getRandomLesson()"
       class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full mt-4"
