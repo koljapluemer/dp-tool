@@ -1,1 +1,1 @@
-/home/b/MEGA/Obsidian/Main/Projects/Concordances.md
+/home/b/MEGA/Obsidian/Zettelkasten/DP Tool.md
