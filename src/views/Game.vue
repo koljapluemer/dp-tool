@@ -156,6 +156,9 @@ const likertQuestions = [
   "The unit was easy.",
   "The unit was exhausting.",
 ];
+
+// import Notebook component
+import Notebook from "@/components/Notebook.vue";
 </script>
 
 <template>
@@ -189,6 +192,8 @@ const likertQuestions = [
     </a>
 
     <h2 class="font-bold text-2xl mt-4">...& rate:</h2>
+
+    <Notebook />
     <table class="table">
       <!-- head -->
       <thead>
