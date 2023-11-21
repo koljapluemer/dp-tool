@@ -1,6 +1,11 @@
+<script setup>
+import Planner from "@/components/Planner.vue";
+
+</script>
+
 <template>
   <main class="p-2 flex flex-col items-center flex-grow justify-center w-full">
-    <router-view />
+    <Planner />
   </main>
 
   <footer class="border-t-2 mt-10 w-full p-4 text-sm">

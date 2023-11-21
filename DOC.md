@@ -1,0 +1,1 @@
+- currently using [vCalendar](https://vcalendar.io/getting-started/installation.html); [this](https://vcalendar.io/calendar/attributes.html) is the mainly useful page for setting dates to colors etc.
