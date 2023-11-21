@@ -1,19 +1,9 @@
-# Basic Arabic Sentences Tutor
-
-Explore Arabic (MSA) with real corpus sentences and concordances. 
+# Deliberate Practice Tracker
 
 
-![Screenshot of the app](app_screenshot.png)
-
-At this stage, it's maybe...a proof of concept? [Check it out here](https://arabic-concordances.koljapluemer.com/).
 
 ## User Stories
 
-- [x] As a learner, I want to practice Arabic reading comprehension and vocabulary.
-
-*Only sort of fulfilled. The core loop is to boring.*
-
-## About
 
 
 ## Running / Contributing / Experimenting
