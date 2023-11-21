@@ -1,11 +1,12 @@
 <script setup>
 import Planner from "@/components/Planner.vue";
+import PracticeLoop from "@/components/PracticeLoop.vue";
 
 </script>
 
 <template>
   <main class="p-2 flex flex-col items-center flex-grow justify-center w-full">
-    <Planner />
+    <PracticeLoop />
   </main>
 
   <footer class="border-t-2 mt-10 w-full p-4 text-sm">
