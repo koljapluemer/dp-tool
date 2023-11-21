@@ -1,12 +1,17 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Game from "@/views/Game.vue";
+import PracticeLoop from "@/views/PracticeLoop.vue";
 
 const routes = [
   {
+    path: "/practice",
+    name: "PracticeLoop",
+    component: PracticeLoop,
+  },
+  {
     path: "/",
-    name: "Game",
-    component: Game,
-  }
+    name: "Library",
+    component: () => import("@/views/Library.vue"),
+  },
 ];
 
 const router = createRouter({

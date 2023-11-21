@@ -1,6 +1,4 @@
 <script setup>
-import Planner from "@/components/Planner.vue";
-import PracticeLoop from "@/components/PracticeLoop.vue";
 
 import { useCoreStore } from "@/stores/core";
 const store = useCoreStore();
@@ -12,10 +10,10 @@ const store = useCoreStore();
     <h1 class="text-4xl font-bold">Deliberate Practice Planner</h1>
   </header>
 
-  <div class="">exercise count: {{ store.exerciseCount }}</div>
+  <!-- <div class="">exercise count: {{ store.exerciseCount }}</div> -->
 
-  <main class="p-2 flex flex-col items-center flex-grow justify-center w-full">
-    <PracticeLoop />
+  <main class="p-2 flex-grow  w-full">
+    <router-view></router-view>
   </main>
 
   <footer class="border-t-2 mt-10 w-full p-4 text-sm">
