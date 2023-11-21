@@ -2,7 +2,6 @@
 import { useCoreStore } from "@/stores/core";
 const store = useCoreStore();
 
-console.log("STORE", store);
 </script>
 
 <template>

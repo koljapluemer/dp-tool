@@ -6,6 +6,7 @@ export const useCoreStore = defineStore('counter', {
         return {
             exercisesCount: 0,
             currentlyPracticedTopic: null,
+            questionsAnswers: []
         }
     },
 
@@ -14,4 +15,6 @@ export const useCoreStore = defineStore('counter', {
             this.exercisesCount++
         }
     },
-})
+    persist: true,
+}
+)

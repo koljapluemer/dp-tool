@@ -5,8 +5,8 @@ const store = useCoreStore();
 </script>
 
 <template>
-  <header class="flex gap-4 items-center">
-    <img src="@/assets/progress-logo.svg" alt="" class="w-20 h-20" />
+  <header class="flex gap-4 items-center mb-4">
+    <img src="@/assets/progress-logo.svg" alt="" class="w-20 h-20 cursor-pointer" @click="$router.push('/')" />
     <h1 class="text-4xl font-bold">Deliberate Practice Planner</h1>
   </header>
 

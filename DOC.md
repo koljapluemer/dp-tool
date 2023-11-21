@@ -1,2 +1,3 @@
 - currently using [vCalendar](https://vcalendar.io/getting-started/installation.html); [this](https://vcalendar.io/calendar/attributes.html) is the mainly useful page for setting dates to colors etc.
 - uses [this virtual bookshelf](https://github.com/petargyurov/virtual-bookshelf) who asks for minor credit
+- using [this](https://prazdevs.github.io/pinia-plugin-persistedstate/guide/) to persist Pinia
