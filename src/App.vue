@@ -2,9 +2,18 @@
 import Planner from "@/components/Planner.vue";
 import PracticeLoop from "@/components/PracticeLoop.vue";
 
+import { useCoreStore } from "@/stores/core";
+const store = useCoreStore();
 </script>
 
 <template>
+  <header class="flex gap-4 items-center">
+    <img src="@/assets/progress-logo.svg" alt="" class="w-20 h-20" />
+    <h1 class="text-4xl font-bold">Deliberate Practice Planner</h1>
+  </header>
+
+  <div class="">exercise count: {{ store.exerciseCount }}</div>
+
   <main class="p-2 flex flex-col items-center flex-grow justify-center w-full">
     <PracticeLoop />
   </main>
