@@ -37,9 +37,24 @@ const saveAnswer = () => {
     currentlyPracticedTopic: store.currentlyPracticedTopic,
     question: randomIntroQuestion.value,
     answer: introAnswer.value,
+    timestamp: Date.now(),
   });
 };
 
+// PRE PRACTICE LOGIC 
+
+const currentTopic = ref("Drawing");
+const randomLesson = ref({});
+
+// import drawing.json
+import data from "@/lessons/drawing.json";
+const drawingLessons = data.lessons;
+console.log("Drawing lessons", drawingLessons);
+
+const getRandomLesson = () => {
+ randomLesson.value = drawingLessons[Math.floor(Math.random() * drawingLessons.length)];
+};
+getRandomLesson();
 
 </script>
 
@@ -55,8 +70,7 @@ const saveAnswer = () => {
         </span>
         practice session!
       </h2>
-      <p>
-      First, a little question...</p>
+      <p>First, a little question...</p>
       <p class="">
         {{ randomIntroQuestion }}
       </p>
@@ -70,9 +84,29 @@ const saveAnswer = () => {
         class="textarea textarea-bordered my-2"
       ></textarea>
 
-      <button @click="saveAnswer();goToNextState()" class="btn btn-primary">
+      <button
+        @click="
+          saveAnswer();
+          goToNextState();
+        "
+        class="btn btn-primary"
+      >
         Save Answer and Start Session
       </button>
+    </div>
+  </div>
+
+  <div
+    class="card bg-base-300 shadow-xl p-4"
+    v-if="currentState === 'pre-practice'"
+  >
+    <div class="card-body">
+      <h2 class="text-2xl font-bold text-center">Next Up:</h2>
+      <p>
+      {{ randomLesson.content }}
+      </p>
+
+
     </div>
   </div>
 </template>
