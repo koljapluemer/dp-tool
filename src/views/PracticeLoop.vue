@@ -45,6 +45,7 @@ const saveAnswer = () => {
     answer: introAnswer.value,
     timestamp: Date.now(),
   });
+  randomIntroQuestion.value = "";
 };
 
 // PRE PRACTICE LOGIC
@@ -65,6 +66,28 @@ const getRandomLesson = () => {
 getRandomLesson();
 
 import Markdown from "vue3-markdown-it";
+
+const sessionGoal = ref("");
+const sessionChallenges = ref("");
+
+const savePrePracticeValues = () => {
+  store.questionsAnswers.push(
+    {
+      currentlyPracticedTopic: store.currentlyPracticedTopic,
+      question: "What is your goal for this session?",
+      answer: sessionGoal.value,
+      timestamp: Date.now(),
+    },
+    {
+      currentlyPracticedTopic: store.currentlyPracticedTopic,
+      question: "What will likely challenge you the most?",
+      answer: sessionChallenges.value,
+      timestamp: Date.now(),
+    }
+  );
+  sessionGoal.value = "";
+  sessionChallenges.value = "";
+};
 </script>
 
 <template>
@@ -111,8 +134,8 @@ import Markdown from "vue3-markdown-it";
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Next Up:</h2>
-      <p>
-        <Markdown :source="randomLesson.content" />
+      <p class="chat-start">
+        <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
       <div class="">
         <button class="btn" @click="getRandomLesson()">
@@ -131,11 +154,35 @@ import Markdown from "vue3-markdown-it";
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Goal Setting:</h2>
-      <p>
-        <Markdown :source="randomLesson.content" />
+      <p class="chat-start">
+        <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
+      <div class="my-2 border-t py-2 border-dashed">
+        <h3>What is your goal for this session?</h3>
+        <textarea
+          name=""
+          id=""
+          rows="5"
+          class="textarea textarea-bordered w-full mb-2"
+          v-model="sessionGoal"
+        ></textarea>
+        <h3>What will likely challenge you the most?</h3>
+        <textarea
+          name=""
+          id=""
+          rows="5"
+          class="textarea textarea-bordered w-full"
+          v-model="sessionChallenges"
+        ></textarea>
+      </div>
       <div class="">
-        <button class="btn btn-primary" @click="goToNextState">
+        <button
+          class="btn btn-primary"
+          @click="
+            savePrePracticeValues();
+            goToNextState();
+          "
+        >
           Start Practice
         </button>
       </div>
@@ -148,8 +195,8 @@ import Markdown from "vue3-markdown-it";
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Practicing:</h2>
-      <p>
-        <Markdown :source="randomLesson.content" />
+      <p class="chat-start">
+        <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
 
       <div class="">
@@ -166,9 +213,8 @@ import Markdown from "vue3-markdown-it";
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Evaluation</h2>
-
-      <p>
-        <Markdown :source="randomLesson.content" />
+      <p class="chat-start">
+        <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
       <div class="">
         <button class="btn btn-primary" @click="goToNextState">

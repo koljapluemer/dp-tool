@@ -11,6 +11,7 @@ const store = useCoreStore();
   </header>
 
   <!-- <div class="">exercise count: {{ store.exerciseCount }}</div> -->
+  <!-- {{ store.questionsAnswers }} -->
 
   <main class="p-2 flex-grow w-full flex flex-col items-center">
     <router-view></router-view>
