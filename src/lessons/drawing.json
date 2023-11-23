@@ -3,17 +3,17 @@
     {
       "id": 0,
       "title": "Magatsu Art Generator",
-      "content": "Sketch something based on [this prompt](https://www.magatsu.net/generators/art/index.php)"
+      "content": "Sketch something based on [this art generator prompt](https://www.magatsu.net/generators/art/index.php)"
     },
     {
       "id": 1,
       "title": "Drawingprompt.com Exercise",
-      "content": "Sketch something based on [this prompt](https://drawingprompt.com)"
+      "content": "Sketch something based on [this drawing prompt](https://drawingprompt.com)"
     },
     {
       "id": 2,
       "title": "Yourartpath Practice",
-      "content": "Sketch something based on [this prompt](hhttps://yourartpath.com/art-prompt-generator"
+      "content": "Sketch something based on [this prompt](hhttps://yourartpath.com/art-prompt-generator)"
     }
   ]
 }

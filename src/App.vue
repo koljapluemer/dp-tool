@@ -90,3 +90,11 @@ const store = useCoreStore();
     </ul>
   </footer>
 </template>
+
+
+<style>
+
+a {
+  text-decoration: underline;
+}
+</style>

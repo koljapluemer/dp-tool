@@ -5,7 +5,13 @@ const store = useCoreStore();
 
 // STATE "CAROUSEL" / OUTER PRACTICE LOOP
 
-const states = ["welcome", "pre-practice", "during-practice", "post-practice"];
+const states = [
+  "welcome",
+  "practice-select",
+  "pre-practice",
+  "during-practice",
+  "post-practice",
+];
 
 const currentState = ref(states[0]);
 
@@ -41,7 +47,7 @@ const saveAnswer = () => {
   });
 };
 
-// PRE PRACTICE LOGIC 
+// PRE PRACTICE LOGIC
 
 const currentTopic = ref("Drawing");
 const randomLesson = ref({});
@@ -52,10 +58,13 @@ const drawingLessons = data.lessons;
 console.log("Drawing lessons", drawingLessons);
 
 const getRandomLesson = () => {
- randomLesson.value = drawingLessons[Math.floor(Math.random() * drawingLessons.length)];
+  console.log("getRandomLesson");
+  randomLesson.value =
+    drawingLessons[Math.floor(Math.random() * drawingLessons.length)];
 };
 getRandomLesson();
 
+import Markdown from "vue3-markdown-it";
 </script>
 
 <template>
@@ -98,15 +107,74 @@ getRandomLesson();
 
   <div
     class="card bg-base-300 shadow-xl p-4"
-    v-if="currentState === 'pre-practice'"
+    v-if="currentState === 'practice-select'"
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Next Up:</h2>
       <p>
-      {{ randomLesson.content }}
+        <Markdown :source="randomLesson.content" />
+      </p>
+      <div class="">
+        <button class="btn" @click="getRandomLesson()">
+          Get something else
+        </button>
+        <button class="btn btn-primary" @click="goToNextState">
+          Go to practice
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="card bg-base-300 shadow-xl p-4"
+    v-if="currentState === 'pre-practice'"
+  >
+    <div class="card-body">
+      <h2 class="text-2xl font-bold text-center">Goal Setting:</h2>
+      <p>
+        <Markdown :source="randomLesson.content" />
+      </p>
+      <div class="">
+        <button class="btn btn-primary" @click="goToNextState">
+          Start Practice
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="card bg-base-300 shadow-xl p-4"
+    v-if="currentState === 'during-practice'"
+  >
+    <div class="card-body">
+      <h2 class="text-2xl font-bold text-center">Practicing:</h2>
+      <p>
+        <Markdown :source="randomLesson.content" />
       </p>
 
+      <div class="">
+        <button class="btn btn-primary" @click="goToNextState">
+          End Practice
+        </button>
+      </div>
+    </div>
+  </div>
 
+  <div
+    class="card bg-base-300 shadow-xl p-4"
+    v-if="currentState === 'post-practice'"
+  >
+    <div class="card-body">
+      <h2 class="text-2xl font-bold text-center">Evaluation</h2>
+
+      <p>
+        <Markdown :source="randomLesson.content" />
+      </p>
+      <div class="">
+        <button class="btn btn-primary" @click="goToNextState">
+          Go To Next
+        </button>
+      </div>
     </div>
   </div>
 </template>
