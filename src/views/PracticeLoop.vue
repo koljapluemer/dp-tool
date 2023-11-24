@@ -3,6 +3,10 @@ import { ref, watch, computed, onMounted } from "vue";
 import { useCoreStore } from "@/stores/core";
 const store = useCoreStore();
 
+// topic of session plus timestamp
+// TODO: not hardcode this
+const sessionUUID = "Uke_" + Date.now();
+
 // STATE "CAROUSEL" / OUTER PRACTICE LOOP
 
 const states = [
@@ -44,6 +48,7 @@ const saveAnswer = () => {
     question: randomIntroQuestion.value,
     answer: introAnswer.value,
     timestamp: Date.now(),
+    session: sessionUUID,
   });
   randomIntroQuestion.value = "";
 };
@@ -77,16 +82,45 @@ const savePrePracticeValues = () => {
       question: "What is your goal for this session?",
       answer: sessionGoal.value,
       timestamp: Date.now(),
+      session: sessionUUID,
     },
     {
       currentlyPracticedTopic: store.currentlyPracticedTopic,
       question: "What will likely challenge you the most?",
       answer: sessionChallenges.value,
       timestamp: Date.now(),
+      session: sessionUUID,
     }
   );
   sessionGoal.value = "";
   sessionChallenges.value = "";
+};
+
+// post practice logic
+
+const likertQuestions = [
+  "I reached my goal successfully.",
+  "I was able to focus on the task at hand.",
+  "The unit was fun.",
+  "I feel like I made progress towards the larger goal.",
+  "The unit was easy.",
+  "The unit was exhausting.",
+];
+
+const postQuestionData = ref({})  
+
+// for save function, loop dict and save each in questionAnswers
+const savePostQuestionData = () => {
+  for (const [key, value] of Object.entries(postQuestionData.value)) {
+    store.questionsAnswers.push({
+      currentlyPracticedTopic: store.currentlyPracticedTopic,
+      question: key,
+      answer: value,
+      timestamp: Date.now(),
+      session: sessionUUID,
+    });
+  }
+  postQuestionData.value = {};
 };
 </script>
 
@@ -216,8 +250,67 @@ const savePrePracticeValues = () => {
       <p class="chat-start">
         <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
+
+      <table class="table mt-4">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th></th>
+            <th class="w-32">Strongly Disagree</th>
+            <th class="w-32">Disagree</th>
+            <th class="w-32">Neutral</th>
+            <th class="w-32">Agree</th>
+            <th class="w-32">Strongly Agree</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="question in likertQuestions" :key="question">
+            <td>{{ question }}</td>
+            <td>
+              <input
+                type="radio"
+                :name="question"
+                value="1"
+                @click="postQuestionData[question] = 1"
+              />
+            </td>
+            <td>
+              <input
+                type="radio"
+                :name="question"
+                value="2"
+                @click="postQuestionData[question] = 2"
+              />
+            </td>
+            <td>
+              <input
+                type="radio"
+                :name="question"
+                value="3"
+                @click="postQuestionData[question] = 3"
+              />
+            </td>
+            <td>
+              <input
+                type="radio"
+                :name="question"
+                value="4"
+                @click="postQuestionData[question] = 4"
+              />
+            </td>
+            <td>
+              <input
+                type="radio"
+                :name="question"
+                value="5"
+                @click="postQuestionData[question] = 5"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <div class="">
-        <button class="btn btn-primary" @click="goToNextState">
+        <button class="btn btn-primary" @click="savePostQuestionData();goToNextState()">
           Go To Next
         </button>
       </div>
