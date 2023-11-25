@@ -10,7 +10,6 @@ const store = useCoreStore();
     <h1 class="text-4xl font-bold">Deliberate Practice Planner</h1>
   </header>
 
-  <!-- <div class="">exercise count: {{ store.exerciseCount }}</div> -->
   <!-- {{ store.questionsAnswers }} -->
 
   <main class="p-2 flex-grow w-full flex flex-col items-center">

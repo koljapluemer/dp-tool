@@ -5,7 +5,7 @@ const store = useCoreStore();
 
 // topic of session plus timestamp
 // TODO: not hardcode this
-const sessionUUID = "Uke_" + Date.now();
+const sessionUUID = store.currentlyPracticedTopic + '_' + Date.now();
 
 // STATE "CAROUSEL" / OUTER PRACTICE LOOP
 
