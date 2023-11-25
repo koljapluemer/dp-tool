@@ -1,11 +1,12 @@
 <script setup>
-import { ref, watch, computed, onMounted } from "vue";
+import { ref, watch, computed, onMounted, onBeforeUnmount } from "vue";
+
 import { useCoreStore } from "@/stores/core";
 const store = useCoreStore();
 
 // topic of session plus timestamp
 // TODO: not hardcode this
-const sessionUUID = store.currentlyPracticedTopic + '_' + Date.now();
+const sessionUUID = store.currentlyPracticedTopic + "_" + Date.now();
 
 // STATE "CAROUSEL" / OUTER PRACTICE LOOP
 
@@ -75,6 +76,9 @@ import Markdown from "vue3-markdown-it";
 const sessionGoal = ref("");
 const sessionChallenges = ref("");
 
+const seconds = ref(0);
+let intervalId;
+
 const savePrePracticeValues = () => {
   store.questionsAnswers.push(
     {
@@ -94,6 +98,41 @@ const savePrePracticeValues = () => {
   );
   sessionGoal.value = "";
   sessionChallenges.value = "";
+
+  // this timer logic is for practice, we start it when moving from the previous UI to the practice UI
+  // this shows that this structure is a bit messy, but that "simply" moving anything into components is not so simple, either
+
+  intervalId = setInterval(() => {
+    seconds.value++;
+  }, 1000);
+};
+
+onBeforeUnmount(() => {
+  clearInterval(intervalId);
+});
+
+// DURING PRACTICE LOGIC
+
+const formattedTime = computed(() => {
+  const minutes = Math.floor(seconds.value / 60);
+  const remainingSeconds = seconds.value % 60;
+
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(remainingSeconds).padStart(2, "0");
+
+  return `${formattedMinutes}:${formattedSeconds}`;
+});
+
+const savePracticeValues = () => {
+  store.questionsAnswers.push({
+    currentlyPracticedTopic: store.currentlyPracticedTopic,
+    question: "Actual Practice Time",
+    answer: seconds.value,
+    timestamp: Date.now(),
+    session: sessionUUID,
+  });
+
+  clearInterval(intervalId);
 };
 
 // post practice logic
@@ -107,7 +146,7 @@ const likertQuestions = [
   "The unit was exhausting.",
 ];
 
-const postQuestionData = ref({})  
+const postQuestionData = ref({});
 
 // for save function, loop dict and save each in questionAnswers
 const savePostQuestionData = () => {
@@ -213,6 +252,7 @@ const savePostQuestionData = () => {
         <button
           class="btn btn-primary"
           @click="
+            seconds = 0;
             savePrePracticeValues();
             goToNextState();
           "
@@ -232,9 +272,19 @@ const savePostQuestionData = () => {
       <p class="chat-start">
         <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
+      <h3 class="text-xl">Your practice timer. Remember to take breaks.</h3>
+      <p class="text-3xl">
+        {{ formattedTime }}
+      </p>
 
       <div class="">
-        <button class="btn btn-primary" @click="goToNextState">
+        <button
+          class="btn btn-primary"
+          @click="
+            savePracticeValues();
+            goToNextState();
+          "
+        >
           End Practice
         </button>
       </div>
@@ -250,6 +300,8 @@ const savePostQuestionData = () => {
       <p class="chat-start">
         <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
+
+      <p>You practiced for {{ formattedTime }}m.</p>
 
       <table class="table mt-4">
         <!-- head -->
@@ -310,7 +362,13 @@ const savePostQuestionData = () => {
         </tbody>
       </table>
       <div class="">
-        <button class="btn btn-primary" @click="savePostQuestionData();goToNextState()">
+        <button
+          class="btn btn-primary"
+          @click="
+            savePostQuestionData();
+            goToNextState();
+          "
+        >
           Go To Next
         </button>
       </div>
