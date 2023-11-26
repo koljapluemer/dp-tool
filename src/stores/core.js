@@ -6,13 +6,14 @@ export const useCoreStore = defineStore('counter', {
         return {
             exercisesCount: 0,
             currentlyPracticedTopic: null,
-            questionsAnswers: []
+            units: []
         }
     },
 
     actions: {
-        increment() {
-            this.exercisesCount++
+        // just here for dev cleanup puposes (maybe a user wants to do this from some settings menu later...)
+        resetStore() {
+            this.units = []
         }
     },
     persist: true,

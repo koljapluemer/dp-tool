@@ -2,6 +2,7 @@
 
 import { useCoreStore } from "@/stores/core";
 const store = useCoreStore();
+// store.resetStore();
 </script>
 
 <template>
@@ -10,7 +11,7 @@ const store = useCoreStore();
     <h1 class="text-4xl font-bold">Deliberate Practice Planner</h1>
   </header>
 
-  {{ store.questionsAnswers }}
+  <!-- {{ store.units }} -->
 
   <main class="p-2 flex-grow w-full flex flex-col items-center">
     <router-view></router-view>

@@ -6,7 +6,14 @@ const store = useCoreStore();
 
 // topic of session plus timestamp
 // TODO: not hardcode this
-const sessionUUID = store.currentlyPracticedTopic + "_" + Date.now();
+const unitUUID = store.currentlyPracticedTopic + "_" + Date.now();
+const unit = ref({
+  id: unitUUID,
+  topic: store.currentlyPracticedTopic,
+  timestamp: Date.now(),
+  data: [],
+});
+
 
 // STATE "CAROUSEL" / OUTER PRACTICE LOOP
 
@@ -44,12 +51,10 @@ const randomIntroQuestion = computed(() => {
 const introAnswer = ref("");
 
 const saveAnswer = () => {
-  store.questionsAnswers.push({
-    currentlyPracticedTopic: store.currentlyPracticedTopic,
+  unit.value.data.push({
     question: randomIntroQuestion.value,
     answer: introAnswer.value,
     timestamp: Date.now(),
-    session: sessionUUID,
   });
   randomIntroQuestion.value = "";
 };
@@ -87,30 +92,23 @@ let intervalId;
 const scheduledMinutes = ref(10);
 
 const savePrePracticeValues = () => {
-  store.questionsAnswers.push(
+  unit.value.data.push(
     {
-      currentlyPracticedTopic: store.currentlyPracticedTopic,
       question: "What is your goal for this session?",
       answer: sessionGoal.value,
       timestamp: Date.now(),
-      session: sessionUUID,
     },
     {
-      currentlyPracticedTopic: store.currentlyPracticedTopic,
       question: "What will likely challenge you the most?",
       answer: sessionChallenges.value,
       timestamp: Date.now(),
-      session: sessionUUID,
     },
     {
-      currentlyPracticedTopic: store.currentlyPracticedTopic,
       question: "How long do you want to practice?",
       answer: scheduledMinutes.value,
       timestamp: Date.now(),
-      session: sessionUUID,
     }
   );
-
 
   // this timer logic is for practice, we start it when moving from the previous UI to the practice UI
   // this shows that this structure is a bit messy, but that "simply" moving anything into components is not so simple, either
@@ -137,12 +135,10 @@ const formattedTime = computed(() => {
 });
 
 const savePracticeValues = () => {
-  store.questionsAnswers.push({
-    currentlyPracticedTopic: store.currentlyPracticedTopic,
+  unit.value.data.push({
     question: "Actual Practice Time",
     answer: seconds.value,
     timestamp: Date.now(),
-    session: sessionUUID,
   });
 
   clearInterval(intervalId);
@@ -165,26 +161,23 @@ const sessionComment = ref("");
 // for save function, loop dict and save each in questionAnswers
 const savePostQuestionData = () => {
   for (const [key, value] of Object.entries(postQuestionData.value)) {
-    store.questionsAnswers.push({
-      currentlyPracticedTopic: store.currentlyPracticedTopic,
+    unit.value.data.push({
       question: key,
       answer: value,
       timestamp: Date.now(),
-      session: sessionUUID,
     });
   }
   // save session comment
-  store.questionsAnswers.push({
-    currentlyPracticedTopic: store.currentlyPracticedTopic,
+  unit.value.data.push({
     question: "Session Comment",
     answer: sessionComment.value,
     timestamp: Date.now(),
-    session: sessionUUID,
   });
   sessionComment.value = "";
   postQuestionData.value = {};
 
-  // run the cleanup
+  // run save and the cleanup
+  store.units.push(unit.value);
   preSessionCleanUp();
 };
 </script>

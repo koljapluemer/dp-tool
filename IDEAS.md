@@ -1,1 +1,2 @@
 - why not follow [this article](https://www.billiondollarstartupideas.com/ideas/deliberate-practice-tracking-and-guidance-app) for a while
+- allow to attach media (=me playing uke)?
