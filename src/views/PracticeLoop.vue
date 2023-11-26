@@ -76,8 +76,15 @@ import Markdown from "vue3-markdown-it";
 const sessionGoal = ref("");
 const sessionChallenges = ref("");
 
+const preSessionCleanUp = () => {
+  sessionGoal.value = "";
+  sessionChallenges.value = "";
+};
+
 const seconds = ref(0);
 let intervalId;
+
+const scheduledMinutes = ref(10);
 
 const savePrePracticeValues = () => {
   store.questionsAnswers.push(
@@ -94,10 +101,16 @@ const savePrePracticeValues = () => {
       answer: sessionChallenges.value,
       timestamp: Date.now(),
       session: sessionUUID,
+    },
+    {
+      currentlyPracticedTopic: store.currentlyPracticedTopic,
+      question: "How long do you want to practice?",
+      answer: scheduledMinutes.value,
+      timestamp: Date.now(),
+      session: sessionUUID,
     }
   );
-  sessionGoal.value = "";
-  sessionChallenges.value = "";
+
 
   // this timer logic is for practice, we start it when moving from the previous UI to the practice UI
   // this shows that this structure is a bit messy, but that "simply" moving anything into components is not so simple, either
@@ -147,6 +160,7 @@ const likertQuestions = [
 ];
 
 const postQuestionData = ref({});
+const sessionComment = ref("");
 
 // for save function, loop dict and save each in questionAnswers
 const savePostQuestionData = () => {
@@ -159,7 +173,19 @@ const savePostQuestionData = () => {
       session: sessionUUID,
     });
   }
+  // save session comment
+  store.questionsAnswers.push({
+    currentlyPracticedTopic: store.currentlyPracticedTopic,
+    question: "Session Comment",
+    answer: sessionComment.value,
+    timestamp: Date.now(),
+    session: sessionUUID,
+  });
+  sessionComment.value = "";
   postQuestionData.value = {};
+
+  // run the cleanup
+  preSessionCleanUp();
 };
 </script>
 
@@ -231,22 +257,35 @@ const savePostQuestionData = () => {
         <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
       <div class="my-2 border-t py-2 border-dashed">
-        <h3>What is your goal for this session?</h3>
-        <textarea
-          name=""
-          id=""
-          rows="5"
-          class="textarea textarea-bordered w-full mb-2"
-          v-model="sessionGoal"
-        ></textarea>
-        <h3>What will likely challenge you the most?</h3>
-        <textarea
-          name=""
-          id=""
-          rows="5"
-          class="textarea textarea-bordered w-full"
-          v-model="sessionChallenges"
-        ></textarea>
+        <div class="mt-4">
+          <div class="flex gap-2 items-center">
+            <span>I want to practice for </span>
+            <input
+              type="number"
+              class="input input-sm"
+              v-model="scheduledMinutes"
+            />
+            <span class="flex-grow"> minutes</span>
+          </div>
+        </div>
+        <div class="mt-4">
+          <span class="pt-4">My goal for this session is...</span>
+          <textarea
+            name=""
+            id=""
+            class="textarea textarea-bordered w-full mb-2"
+            v-model="sessionGoal"
+          ></textarea>
+        </div>
+        <div class="mt-4">
+          <span class="">The biggest challenge will probably be...</span>
+          <textarea
+            name=""
+            id=""
+            class="textarea textarea-bordered w-full"
+            v-model="sessionChallenges"
+          ></textarea>
+        </div>
       </div>
       <div class="">
         <button
@@ -272,8 +311,13 @@ const savePostQuestionData = () => {
       <p class="chat-start">
         <Markdown :source="randomLesson.content" class="chat-bubble" />
       </p>
-      <h3 class="text-xl">Your practice timer. Remember to take breaks.</h3>
-      <p class="text-3xl">
+      <h3 class="text-xl mt-3">
+        Your practice timer. Remember to take breaks.
+      </h3>
+      <small
+        >(you scheduled {{ scheduledMinutes }} minutes for this unit)</small
+      >
+      <p class="text-3xl my-5">
         {{ formattedTime }}
       </p>
 
@@ -302,6 +346,27 @@ const savePostQuestionData = () => {
       </p>
 
       <p>You practiced for {{ formattedTime }}m.</p>
+
+      <div class="mt-4">
+        <p class="my-1">
+          Your goal was: <em>{{ sessionGoal }}</em>
+        </p>
+        <p class="my-1">
+          You predicted challenges were: <em>{{ sessionChallenges }}</em>
+        </p>
+        <div class="mt-5">
+          <label>
+            Evaluate your session. What was hard, what was surprising, what was
+            interesting?
+          </label>
+          <textarea
+            name=""
+            id=""
+            class="textarea textarea-bordered w-full mt-2"
+            v-model="sessionComment"
+          ></textarea>
+        </div>
+      </div>
 
       <table class="table mt-4">
         <!-- head -->
