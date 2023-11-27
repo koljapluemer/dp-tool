@@ -9,7 +9,13 @@ const store = useCoreStore();
     <h3 class="font-bold text-xl">Your Practice Shelf:</h3>
 
     <div class="bookshelf">
-      <div class="book">
+      <div 
+      class="book cursor-pointer"
+        @click="
+          store.currentlyPracticedTopic = 'uke';
+          $router.push('/practice');
+        "
+        >
         <div class="side spine">
           <span class="spine-title"> Uke </span>
           <span class="spine-author"> 1 </span>
@@ -20,7 +26,7 @@ const store = useCoreStore();
       <div
         class="book cursor-pointer"
         @click="
-          store.currentlyPracticedTopic = 'Drawing';
+          store.currentlyPracticedTopic = 'drawing';
           $router.push('/practice');
         "
       >

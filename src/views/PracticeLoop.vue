@@ -14,7 +14,6 @@ const unit = ref({
   data: [],
 });
 
-
 // STATE "CAROUSEL" / OUTER PRACTICE LOOP
 
 const states = [
@@ -61,18 +60,15 @@ const saveAnswer = () => {
 
 // PRE PRACTICE LOGIC
 
-const currentTopic = ref("Drawing");
 const randomLesson = ref({});
 
-// import drawing.json
-import data from "@/lessons/drawing.json";
-const drawingLessons = data.lessons;
-console.log("Drawing lessons", drawingLessons);
+import data from "@/data/lessons.json";
+
+const lessons = data[store.currentlyPracticedTopic]
 
 const getRandomLesson = () => {
   console.log("getRandomLesson");
-  randomLesson.value =
-    drawingLessons[Math.floor(Math.random() * drawingLessons.length)];
+  randomLesson.value = lessons[Math.floor(Math.random() * lessons.length)];
 };
 getRandomLesson();
 

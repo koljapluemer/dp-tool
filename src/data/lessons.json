@@ -1,0 +1,66 @@
+{
+  "drawing": [
+    {
+      "id": 0,
+      "title": "Magatsu Art Generator",
+      "content": "Sketch something based on [this art generator prompt](https://www.magatsu.net/generators/art/index.php)"
+    },
+    {
+      "id": 1,
+      "title": "Drawingprompt.com Exercise",
+      "content": "Sketch something based on [this drawing prompt](https://drawingprompt.com)"
+    },
+    {
+      "id": 2,
+      "title": "Yourartpath Practice",
+      "content": "Sketch something based on [this prompt](https://yourartpath.com/art-prompt-generator)"
+    }
+  ],
+  "uke": [
+    {
+      "content": "[SETTING UP](https://www.youtube.com/watch?v=yBSHVqtEnC8&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=1&pp=iAQB)",
+      "id": 0,
+      "title": "DAY 1"
+    },
+    {
+      "content": "[FINGERPICKING Adele Someone Like You](https://www.youtube.com/watch?v=9QXr8yuutTE&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=2&pp=iAQB)",
+      "id": 1,
+      "title": "DAY 2"
+    },
+    {
+      "content": "[FINGERPICKING Can't Help Falling In Love](https://www.youtube.com/watch?v=MGLDb7OBPFk&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=3&pp=iAQB)",
+      "id": 2,
+      "title": "DAY 3"
+    },
+    {
+      "content": "[FINGERPICKING Hallelujah Leonard Cohen](https://www.youtube.com/watch?v=TDzC9dplNmQ&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=4&pp=iAQB)",
+      "id": 3,
+      "title": "DAY 4"
+    },
+    {
+      "content": "[DIFFICULT CHORD SWITCHES MADE EASY](https://www.youtube.com/watch?v=3vvBuhBNUWQ&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=5&pp=iAQB)",
+      "id": 4,
+      "title": "DAY 5"
+    },
+    {
+      "content": "[READING MUSIC Quarter Notes, Rests](https://www.youtube.com/watch?v=DNMBTl9VCZE&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=6&pp=iAQB)",
+      "id": 5,
+      "title": "DAY 6"
+    },
+    {
+      "content": "[ READING MUSIC Eighth Notes](https://www.youtube.com/watch?v=aPr7Row0Sj8&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=7&pp=iAQB)",
+      "id": 6,
+      "title": "DAY 7"
+    },
+    {
+      "content": "[SCALES C Major Scale](https://www.youtube.com/watch?v=829jI79Ofuk&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=8&pp=iAQB)",
+      "id": 7,
+      "title": "DAY 8"
+    },
+    {
+      "content": "[SCALES G Major Scale](https://www.youtube.com/watch?v=Tfb7NdsJYVE&list=PLJFa3EaocfZnNCDW157HHk5NxE0OKUUZ8&index=9&pp=iAQB)",
+      "id": 8,
+      "title": "DAY 9"
+    }
+  ]
+}
