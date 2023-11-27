@@ -64,10 +64,9 @@ const randomLesson = ref({});
 
 import data from "@/data/lessons.json";
 
-const lessons = data[store.currentlyPracticedTopic]
+const lessons = data[store.currentlyPracticedTopic];
 
 const getRandomLesson = () => {
-  console.log("getRandomLesson");
   randomLesson.value = lessons[Math.floor(Math.random() * lessons.length)];
 };
 getRandomLesson();
@@ -222,9 +221,14 @@ const savePostQuestionData = () => {
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Next Up:</h2>
-      <p class="chat-start">
-        <Markdown :source="randomLesson.content" class="chat-bubble" />
-      </p>
+      <div class="chat-start">
+        <div class="chat-bubble">
+          <div class="text-xl mb-2">
+            {{ randomLesson.title }}
+          </div>
+          <Markdown :source="randomLesson.content" />
+        </div>
+      </div>
       <div class="">
         <button class="btn" @click="getRandomLesson()">
           Get something else
@@ -242,9 +246,14 @@ const savePostQuestionData = () => {
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Goal Setting:</h2>
-      <p class="chat-start">
-        <Markdown :source="randomLesson.content" class="chat-bubble" />
-      </p>
+      <div class="chat-start">
+        <div class="chat-bubble">
+          <div class="text-xl mb-2">
+            {{ randomLesson.title }}
+          </div>
+          <Markdown :source="randomLesson.content" />
+        </div>
+      </div>
       <div class="my-2 border-t py-2 border-dashed">
         <div class="mt-4">
           <div class="flex gap-2 items-center">
@@ -297,9 +306,14 @@ const savePostQuestionData = () => {
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Practicing:</h2>
-      <p class="chat-start">
-        <Markdown :source="randomLesson.content" class="chat-bubble" />
-      </p>
+      <div class="chat-start">
+        <div class="chat-bubble">
+          <div class="text-xl mb-2">
+            {{ randomLesson.title }}
+          </div>
+          <Markdown :source="randomLesson.content" />
+        </div>
+      </div>
       <h3 class="text-xl mt-3">
         Your practice timer. Remember to take breaks.
       </h3>
@@ -330,10 +344,14 @@ const savePostQuestionData = () => {
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Evaluation</h2>
-      <p class="chat-start">
-        <Markdown :source="randomLesson.content" class="chat-bubble" />
-      </p>
-
+       <div class="chat-start">
+        <div class="chat-bubble">
+          <div class="text-xl mb-2">
+            {{ randomLesson.title }}
+          </div>
+          <Markdown :source="randomLesson.content" />
+        </div>
+      </div>
       <p>You practiced for {{ formattedTime }}m.</p>
 
       <div class="mt-4">
