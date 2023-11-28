@@ -1,6 +1,25 @@
 <script setup>
 import { useCoreStore } from "@/stores/core";
 const store = useCoreStore();
+
+const topics = [
+  {
+    title: "uke",
+    icon: "🎶",
+  },
+  {
+    title: "drawing",
+    icon: "🎨",
+  },
+  {
+    title: "go",
+    icon: "🎲",
+  },
+  {
+    title: "arabic",
+    icon: "📚",
+  },
+];
 </script>
 
 <template>
@@ -9,51 +28,16 @@ const store = useCoreStore();
 
     <div class="bookshelf">
       <div
+        v-for="topic in topics"
         class="book cursor-pointer"
         @click="
-          store.currentlyPracticedTopic = 'uke';
+          store.currentlyPracticedTopic = topic.title;
           $router.push('/practice');
         "
       >
         <div class="side spine">
-          <span class="spine-title"> Uke </span>
-          <span class="spine-author"> 1 </span>
-        </div>
-        <div class="side top"></div>
-        <div class="side cover"></div>
-      </div>
-      <div
-        class="book cursor-pointer"
-        @click="
-          store.currentlyPracticedTopic = 'drawing';
-          $router.push('/practice');
-        "
-      >
-        <div class="side spine">
-          <span class="spine-title"> Drawing </span>
-          <span class="spine-author"> 2 </span>
-        </div>
-        <div class="side top"></div>
-        <div class="side cover"></div>
-      </div>
-      <div class="book">
-        <div class="side spine">
-          <span class="spine-title"> Go </span>
-          <span class="spine-author"> 3 </span>
-        </div>
-        <div class="side top"></div>
-        <div class="side cover"></div>
-      </div>
-      <div
-        class="book cursor-pointer"
-        @click="
-          store.currentlyPracticedTopic = 'arabic';
-          $router.push('/practice');
-        "
-      >
-        <div class="side spine">
-          <span class="spine-title"> Learning Arabic </span>
-          <span class="spine-author"> 4 </span>
+          <span class="spine-title"> {{ topic.title.toUpperCase() }} </span>
+          <span class="spine-author"> {{ topic.icon }} </span>
         </div>
         <div class="side top"></div>
         <div class="side cover"></div>
