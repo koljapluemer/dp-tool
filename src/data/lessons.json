@@ -14,6 +14,151 @@
       "id": 2,
       "title": "Yourartpath Practice",
       "content": "Sketch something based on [this prompt](https://yourartpath.com/art-prompt-generator)"
+    },
+    {
+      "id": 101,
+      "title": "Drawing Practice #1",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a sphere cut in half"
+    },
+    {
+      "id": 102,
+      "title": "Drawing Practice #2",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw two overlapping spheres cut in four equal parts"
+    },
+    {
+      "id": 103,
+      "title": "Drawing Practice #3",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a row of overlapping spheres converging towards a point"
+    },
+    {
+      "id": 104,
+      "title": "Drawing Practice #4",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a sphere, add light and shadow (both on the object and on the ground)"
+    },
+    {
+      "id": 105,
+      "title": "Drawing Practice #5",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a couple of cylinders, partly overlapping"
+    },
+    {
+      "id": 106,
+      "title": "Drawing Practice #6",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a bunch of complex polygons and extrude them to be 3D"
+    },
+    {
+      "id": 107,
+      "title": "Drawing Practice #7",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw floating cubes in different rotations, overlapping. Use freehand without ruler or perspective grid."
+    },
+    {
+      "id": 108,
+      "title": "Drawing Practice #8",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw two eyeballs (sphere with circles on them) looking in the same direction, optionally shade them"
+    },
+    {
+      "id": 109,
+      "title": "Drawing Practice #9",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw two 'pyramids' of cubes and cylinders stacked on top of each other. Divide the shapes into four."
+    },
+    {
+      "id": 110,
+      "title": "Drawing Practice #10",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw two cylinders and spheres, one each whole, one cut in half"
+    },
+    {
+      "id": 111,
+      "title": "Drawing Practice #11",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw short cables made from bent cylinders. Cut them in equal segments."
+    },
+    {
+      "id": 112,
+      "title": "Drawing Practice #12",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw five bent boxes, cut them in equal segments."
+    },
+    {
+      "id": 113,
+      "title": "Drawing Practice #13",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a sphere, sliced several times, with the parts floating slightly apart but overlapping."
+    },
+    {
+      "id": 114,
+      "title": "Drawing Practice #14",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a box. Extrude other boxes from the box, making a complex object. Shade faces pointing the same way equally."
+    },
+    {
+      "id": 115,
+      "title": "Drawing Practice #15",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw bowels made from a cube, from a sphere and from a cylinder"
+    },
+    {
+      "id": 116,
+      "title": "Drawing Practice #16",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a bunch of wires (slightly bent cylinders), held together by a ring or torus in the middle of the bundle"
+    },
+    {
+      "id": 117,
+      "title": "Drawing Practice #17",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a 'totem' from different shapes on top of another and fused together. Feel free to extrude from them other shapes."
+    },
+    {
+      "id": 118,
+      "title": "Drawing Practice #18",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a complex box by extruding and cutting other shapes from it. Shade it."
+    },
+    {
+      "id": 119,
+      "title": "Drawing Practice #19",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a cup of coffee with a saucer and a handle. Add a cylindrical marshmallow on top."
+    },
+    {
+      "id": 120,
+      "title": "Drawing Practice #20",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw two boxes with a constructed 1-point-perspective. Cut them into equal segments (in perspective)."
+    },
+    {
+      "id": 121,
+      "title": "Drawing Practice #21",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a box with various cutouts (like a building with windows and doors) in 1-point-perspective."
+    },
+    {
+      "id": 122,
+      "title": "Drawing Practice #22",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a street with blocky buildings in one-point-perspective."
+    },
+    {
+      "id": 123,
+      "title": "Drawing Practice #23",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a chest based on a box in two-point-perspective."
+    },
+    {
+      "id": 124,
+      "title": "Drawing Practice #24",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a street corner based on a boxy building in two-point-perspective."
+    },
+    {
+      "id": 125,
+      "title": "Drawing Practice #25",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw a hand made from cylinders and boxes."
+    },
+    {
+      "id": 126,
+      "title": "Drawing Practice #26",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nConstruct a maze made from a box with cutouts in 2-point-perspective. Shade faces pointing the same way equally."
+    },
+    {
+      "id": 127,
+      "title": "Drawing Practice #27",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nDraw the same box in at least five different rotations. Use freehand, but be mindful of perspective."
+    },
+    {
+      "id": 128,
+      "title": "Drawing Practice #28",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nMake a hand out of boxes and cylinders. Let it hold a cylinder (e.g. a coke can)"
+    },
+    {
+      "id": 129,
+      "title": "Drawing Practice #29",
+      "content": "*Inspired by [Marc Brunet](https://www.youtube.com/watch?v=K5AV42mgAe0)* \n\nUsing a reference, draw a simplified skull out of base shapes."
     }
   ],
   "uke": [

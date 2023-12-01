@@ -69,7 +69,6 @@ const lessons = data[store.currentlyPracticedTopic];
 const getRandomLesson = () => {
   randomLesson.value = lessons[Math.floor(Math.random() * lessons.length)];
 };
-getRandomLesson();
 
 import Markdown from "vue3-markdown-it";
 
@@ -79,6 +78,7 @@ const sessionChallenges = ref("");
 const preSessionCleanUp = () => {
   sessionGoal.value = "";
   sessionChallenges.value = "";
+  getRandomLesson();
 };
 
 const seconds = ref(0);
