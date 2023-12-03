@@ -68,6 +68,7 @@ const lessons = data[store.currentlyPracticedTopic];
 
 const getRandomLesson = () => {
   randomLesson.value = lessons[Math.floor(Math.random() * lessons.length)];
+  console.log('got random lesson', randomLesson.value);
 };
 
 import Markdown from "vue3-markdown-it";
@@ -206,6 +207,7 @@ const savePostQuestionData = () => {
       <button
         @click="
           saveAnswer();
+          getRandomLesson();
           goToNextState();
         "
         class="btn btn-primary"
@@ -219,7 +221,7 @@ const savePostQuestionData = () => {
     class="card bg-base-300 shadow-xl p-4"
     v-if="currentState === 'practice-select'"
   >
-    <div class="card-body">
+    <div class="card-body" v-if="randomLesson.title">
       <h2 class="text-2xl font-bold text-center">Next Up:</h2>
       <div class="chat-start">
         <div class="chat-bubble">
