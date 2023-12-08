@@ -4,6 +4,7 @@
 
 ## User Stories
 
+- As a practitioner/learner, I want to progress in my given discipline, with minimal extraneous friction and in an effective & efficient manner
 
 
 ## Running / Contributing / Experimenting
