@@ -1,21 +1,41 @@
 <script setup>
 import { useCoreStore } from "@/stores/core";
 import { ref } from "vue";
+// router
+import { useRouter } from "vue-router";
+const $router = useRouter();
 
 const store = useCoreStore();
 
-const topics = ref([]);
+const newTopic = ref("");
+
+// function to add new topic
+const addTopic = () => {
+  store.addTopic(newTopic.value);
+  newTopic.value = "";
+};
+
+
+const goPracticeTopic = (topic) => {
+  store.currentlyPracticedTopic = topic;
+  $router.push("/practice");
+};
 </script>
 
 <template>
   What do you want to get good at?
+  <div class="card">
+    <div class="card-body">
+      <button class="btn" v-for="topic in store.topics" :key="topic" @click="goPracticeTopic(topic)">
+        {{ topic }}
+      </button>
 
-  <!-- if topics not empty, show link list of topics; if empty, prompt for a new topic -->
-  <div class="card">
-    <input type="text" class="input" />
-  </div>
-  <div class="card">
-    <h2 class="font-bold">Your Topics</h2>
+      <div class="flex gap-2 items-center">
+        <label for="newTopic">Add a new topic:</label>
+        <input type="text" class="input input-bordered" name="newTopic" v-model="newTopic" />
+        <button class="btn" @click="addTopic">Add</button>
+      </div>
+    </div>
   </div>
 </template>
 
