@@ -4,14 +4,12 @@ import { ref, watch, computed, onMounted, onBeforeUnmount } from "vue";
 import { useCoreStore } from "@/stores/core";
 const store = useCoreStore();
 
-// topic of session plus timestamp
-// TODO: not hardcode this
-const unitUUID = store.currentlyPracticedTopic + "_" + Date.now();
 const unit = ref({
-  id: unitUUID,
   topic: store.currentlyPracticedTopic,
   timestamp: Date.now(),
   data: [],
+  title: "",
+  content: "",
 });
 
 // STATE "CAROUSEL" / OUTER PRACTICE LOOP
@@ -93,7 +91,6 @@ const preSessionCleanUp = () => {
   sessionGoal.value = "";
   sessionChallenges.value = "";
 
-  getRandomLesson();
 };
 
 const seconds = ref(0);
@@ -102,6 +99,8 @@ let intervalId;
 const scheduledMinutes = ref(10);
 
 const savePrePracticeValues = () => {
+  unit.value.title = randomLesson.value.title;
+  unit.value.content = randomLesson.value.content;
   unit.value.data.push(
     {
       question: "What is your goal for this session?",
