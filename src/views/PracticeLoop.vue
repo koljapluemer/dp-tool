@@ -18,6 +18,7 @@ const unit = ref({
 
 const states = [
   "welcome",
+  "type-of-practice-select",
   "practice-select",
   "pre-practice",
   "during-practice",
@@ -58,9 +59,23 @@ const saveAnswer = () => {
   randomIntroQuestion.value = "";
 };
 
+// PRACTICE SELECTION
+
+const createNewExercise = ref(false);
+
+const newExercise = ref({});
+newExercise.value = {};
+
 // PRE PRACTICE LOGIC
 
 const randomLesson = ref({});
+
+const saveNewExercise = () => {
+  randomLesson.value = {
+    title: newExercise.value.title,
+    content: newExercise.value.content,
+  };
+};
 
 import data from "@/data/lessons.json";
 
@@ -68,17 +83,17 @@ const lessons = data[store.currentlyPracticedTopic];
 
 const getRandomLesson = () => {
   randomLesson.value = lessons[Math.floor(Math.random() * lessons.length)];
-  console.log('got random lesson', randomLesson.value);
+  console.log("got random lesson", randomLesson.value);
 };
 
 import Markdown from "vue3-markdown-it";
 
 const sessionGoal = ref("");
 const sessionChallenges = ref("");
-
 const preSessionCleanUp = () => {
   sessionGoal.value = "";
   sessionChallenges.value = "";
+
   getRandomLesson();
 };
 
@@ -179,7 +194,7 @@ const savePostQuestionData = () => {
 </script>
 
 <template>
-  <!-- {{ currentState }} -->
+  {{ currentState }}
 
   <div class="card bg-base-300 shadow-xl p-4" v-if="currentState === 'welcome'">
     <div class="card-body">
@@ -219,25 +234,89 @@ const savePostQuestionData = () => {
 
   <div
     class="card bg-base-300 shadow-xl p-4"
+    v-if="currentState === 'type-of-practice-select'"
+  >
+    <div class="card-body">
+      <h2 class="text-2xl font-bold text-center">
+        How do you want to practice?
+      </h2>
+      <div class="">
+        <button
+          class="btn"
+          @click="
+            createNewExercise = true;
+            goToNextState();
+          "
+        >
+          Create a new exercise
+        </button>
+        <button
+          class="btn"
+          @click="
+            createNewExercise = false;
+            goToNextState();
+          "
+        >
+          Practice an existing exercise
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="card bg-base-300 shadow-xl p-4"
     v-if="currentState === 'practice-select'"
   >
     <div class="card-body" v-if="randomLesson.title">
-      <h2 class="text-2xl font-bold text-center">Next Up:</h2>
-      <div class="chat-start">
-        <div class="chat-bubble">
-          <div class="text-xl mb-2">
-            {{ randomLesson.title }}
-          </div>
-          <Markdown :source="randomLesson.content" />
-        </div>
+      <div class="" v-if="createNewExercise">
+        <p for="">
+          Challenge yourself with a newly created
+          {{ store.currentlyPracticedTopic }} exercise!
+        </p>
+        <label for="">Title (a short name for the exercise)</label>
+        <input
+          type="text"
+          class="input input-bordered w-full"
+          v-model="newExercise.title"
+        />
+        <label for="">Content (the specific instructions)</label>
+
+        <textarea
+          name=""
+          id=""
+        
+          v-model="newExercise.content"
+          placeholder="Your exercise..."
+          class="textarea textarea-bordered my-2 w-full"
+        ></textarea>
+        <button
+          class="btn btn-primary"
+          @click="
+            saveNewExercise();
+            goToNextState();
+          "
+        >
+          Let's Go!
+        </button>
       </div>
-      <div class="">
-        <button class="btn" @click="getRandomLesson()">
-          Get something else
-        </button>
-        <button class="btn btn-primary" @click="goToNextState">
-          Go to practice
-        </button>
+      <div class="" v-else>
+        <h2 class="text-2xl font-bold text-center">Next Up:</h2>
+        <div class="chat-start">
+          <div class="chat-bubble">
+            <div class="text-xl mb-2">
+              {{ randomLesson.title }}
+            </div>
+            <Markdown :source="randomLesson.content" />
+          </div>
+        </div>
+        <div class="">
+          <button class="btn" @click="getRandomLesson()">
+            Get something else
+          </button>
+          <button class="btn btn-primary" @click="goToNextState">
+            Go to practice
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -346,7 +425,7 @@ const savePostQuestionData = () => {
   >
     <div class="card-body">
       <h2 class="text-2xl font-bold text-center">Evaluation</h2>
-       <div class="chat-start">
+      <div class="chat-start">
         <div class="chat-bubble">
           <div class="text-xl mb-2">
             {{ randomLesson.title }}

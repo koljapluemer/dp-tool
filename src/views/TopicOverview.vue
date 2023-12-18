@@ -10,6 +10,7 @@ const store = useCoreStore();
 
 <template>
 Current Topic: {{ store.currentlyPracticedTopic }}
+<router-link to="/practice">Go To Practice</router-link>
 </template>
 
 <style scoped></style>
