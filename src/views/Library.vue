@@ -18,7 +18,7 @@ const addTopic = () => {
 
 const goPracticeTopic = (topic) => {
   store.currentlyPracticedTopic = topic;
-  $router.push("/practice");
+  $router.push("/topic");
 };
 </script>
 

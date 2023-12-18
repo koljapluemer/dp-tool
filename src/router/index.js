@@ -8,6 +8,11 @@ const routes = [
     component: PracticeLoop,
   },
   {
+    path: "/topic",
+    name: "Topic",
+    component: () => import("@/views/TopicOverview.vue"),
+  },
+  {
     path: "/",
     name: "Library",
     component: () => import("@/views/Library.vue"),
