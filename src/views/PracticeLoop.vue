@@ -59,7 +59,7 @@ const saveAnswer = () => {
   randomIntroQuestion.value = "";
 };
 
-// PRACTICE SELECTION
+// TYPE OF PRACTICE SELECTION
 
 const createNewExercise = ref(false);
 
@@ -75,14 +75,13 @@ const saveNewExercise = () => {
     title: newExercise.value.title,
     content: newExercise.value.content,
   };
+  store.topics[store.currentlyPracticedTopic].push(randomLesson.value);
 };
 
-import data from "@/data/lessons.json";
 
-const lessons = data[store.currentlyPracticedTopic];
 
 const getRandomLesson = () => {
-  randomLesson.value = lessons[Math.floor(Math.random() * lessons.length)];
+  randomLesson.value = store.topics[store.currentlyPracticedTopic][Math.floor(Math.random() * store.topics[store.currentlyPracticedTopic].length)];
   console.log("got random lesson", randomLesson.value);
 };
 
@@ -194,7 +193,6 @@ const savePostQuestionData = () => {
 </script>
 
 <template>
-  {{ currentState }}
 
   <div class="card bg-base-300 shadow-xl p-4" v-if="currentState === 'welcome'">
     <div class="card-body">

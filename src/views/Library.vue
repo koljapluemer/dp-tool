@@ -26,7 +26,7 @@ const goPracticeTopic = (topic) => {
   What do you want to get good at?
   <div class="card">
     <div class="card-body">
-      <button class="btn" v-for="topic in store.topics" :key="topic" @click="goPracticeTopic(topic)">
+      <button class="btn" v-for="(lessons, topic) in store.topics" :key="topic" @click="goPracticeTopic(topic)">
         {{ topic }}
       </button>
 
