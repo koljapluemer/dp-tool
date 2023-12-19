@@ -73,6 +73,7 @@ const saveNewExercise = () => {
     content: newExercise.value.content,
   };
   store.topics[store.currentlyPracticedTopic].push(randomLesson.value);
+  newExercise.value = {};
 };
 
 
