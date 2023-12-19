@@ -54,7 +54,6 @@ const saveAnswer = () => {
     answer: introAnswer.value,
     timestamp: Date.now(),
   });
-  randomIntroQuestion.value = "";
 };
 
 // TYPE OF PRACTICE SELECTION
@@ -264,7 +263,7 @@ const savePostQuestionData = () => {
     class="card bg-base-300 shadow-xl p-4"
     v-if="currentState === 'practice-select'"
   >
-    <div class="card-body" v-if="randomLesson.title">
+    <div class="card-body">
       <div class="" v-if="createNewExercise">
         <p for="">
           Challenge yourself with a newly created
