@@ -4,3 +4,6 @@
 - notebook inspo:
     1. <https://css-tricks.com/how-to-create-a-notebook-design-with-css/>
     2. <https://codepen.io/yy/details/wvQjXM>
+
+
+- use Learn X in 30 Days videos for curricula!

@@ -1,2 +1,3 @@
+- sketch successful state for this (maybe storyboard)
 - implement possibility to add own lessons (*what to do with the given ones? Template?*)
     - start w/ 'which topic do you want to practice' (NewLibrary)
