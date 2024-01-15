@@ -39,8 +39,12 @@ const unit = computed(() => {
 
 <template>
   <h1 class="text-3xl">Current Topic: {{ store.currentlyPracticedTopic }}</h1>
-  <h2 class="text-2xl mt-5 mb-2">Practice History</h2>
+  <router-link to="/practice" class="btn btn-primary my-6"
+    >Go To Practice</router-link
+  >
+
   <div class="card bg-base-200 w-full max-w-xl" v-if="unit">
+    <h2 class="text-2xl mt-5 mb-2">Practice History</h2>
     <div class="card-body">
       <h4 class="uppercase text-sm">{{ unit.topic }}</h4>
       <h3 class="text-xl">{{ unit.title }}</h3>
@@ -63,27 +67,23 @@ const unit = computed(() => {
     </div>
   </div>
 
-  <h2 class="text-2xl mt-5 mb-2">Lessons</h2>
-
-
-  <router-link to="/practice" class="btn btn-primary mb-6"
-    >Go To Practice</router-link
-  >
-
-  <ul class="">
-    <li
-      v-for="lesson in store.topics[store.currentlyPracticedTopic]"
-      :key="lesson"
-    >
-      <h3>
-        {{ lesson.title }}
-      </h3>
-      <Markdown
-        class="text-ellipsis overflow-hidden max-w-sm block text-xs"
-        :source="lesson.content"
-      />
-    </li>
-  </ul>
+  <div class="card bg-base-200 w-full max-w-xl">
+    <ul class="card-body">
+      <h2 class="text-2xl mt-5 mb-2 card-title">Lessons</h2>
+      <li
+        v-for="lesson in store.topics[store.currentlyPracticedTopic]"
+        :key="lesson"
+      >
+        <h3>
+          {{ lesson.title }}
+        </h3>
+        <Markdown
+          class="text-ellipsis overflow-hidden max-w-sm block text-xs"
+          :source="lesson.content"
+        />
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped></style>
